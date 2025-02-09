@@ -671,29 +671,30 @@ function onSnapEnd() {
 }
 
 // Function to send user's question and board state to the server
+const API_BASE_URL = window.location.hostname.includes("localhost")
+    ? "http://localhost:3000"  // Local dev environment
+    : "https://interactive-chess-gtrxfv1ma-george-kofis-projects.vercel.app/";  // Vercel deployment
+
 async function askAI() {
-  const userInput = document.getElementById("userInput").value.trim(); // Get user question
-  const fen = game.fen(); // Get current board position in FEN notation
+  const userInput = document.getElementById("userInput").value.trim();
+  const fen = game.fen();
 
   if (!userInput) {
-    alert("Please enter a question for the AI.");
+    alert("Please enter a question.");
     return;
   }
 
   try {
-    const response = await fetch("/api/ask", {
+    const response = await fetch(`${API_BASE_URL}/api/ask`, {  // <== DYNAMIC API URL
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: userInput, fen }) // Send both prompt and FEN
+      body: JSON.stringify({ prompt: userInput, fen })
     });
 
     const data = await response.json();
+    document.getElementById("aiResponse").innerText = data.response || "AI did not return a response.";
 
-    // Display AI response in the UI
-    const aiText = data.response || "AI did not return a response.";
-    document.getElementById("aiResponse").innerText = aiText;
-
-    // Play AI response audio
+    // Play AI-generated audio (if available)
     if (data.audio) {
       playAudio(data.audio);
     }
@@ -703,6 +704,7 @@ async function askAI() {
     document.getElementById("aiResponse").innerText = "Error reaching AI server.";
   }
 }
+
 
 // Function to play AI-generated speech
 function playAudio(base64Audio) {
