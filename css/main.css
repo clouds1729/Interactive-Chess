@@ -1,0 +1,112 @@
+/* FC Barcelona Theme Colors */
+:root {
+    --barca-blue: #004D98;  /* Deep Barça Blue */
+    --barca-red: #A50044;   /* Claret Red */
+    --barca-yellow: #EDBB00; /* Golden Yellow */
+    --barca-dark: #2D2926;  /* Dark Background */
+    --barca-light: #F5F5F5; /* Light Accent */
+}
+
+/* General Styling */
+body {
+    background-color: var(--barca-dark);
+    color: var(--barca-light);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Centered Text */
+.text-align-center {
+    text-align: center;
+}
+
+/* Chessboard Styling */
+#myBoard {
+    max-width: 100%;
+    height: auto;
+    overflow: scroll;
+    border: 3px solid var(--barca-yellow);
+    background-color: var(--barca-light);
+}
+
+/* Move Highlights */
+.highlight-white {
+    box-shadow: inset 0 0 5px 5px var(--barca-yellow); /* Golden yellow highlight */
+}
+
+.highlight-black {
+    box-shadow: inset 0 0 5px 5px var(--barca-blue); /* Deep Barça blue glow */
+}
+
+.highlight-hint {
+    box-shadow: inset 0 0 5px 5px var(--barca-red); /* Claret red hint highlight */
+}
+
+/* Button Styling */
+.btn-header {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: var(--barca-red);
+    color: var(--barca-yellow);
+    border: none;
+}
+
+.btn-header:hover {
+    background-color: var(--barca-yellow);
+    color: var(--barca-dark);
+}
+
+/* No underlines or outlines */
+.no-underline {
+    text-decoration: none;
+}
+
+.no-outline:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Bootstrap Buttons - Customizing for Barcelona Colors */
+.btn-primary {
+    background-color: var(--barca-blue);
+    border: none;
+    color: var(--barca-yellow);
+}
+
+.btn-primary:hover {
+    background-color: var(--barca-red);
+    color: var(--barca-light);
+}
+
+.btn-secondary {
+    background-color: var(--barca-red);
+    border: none;
+    color: var(--barca-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--barca-yellow);
+    color: var(--barca-dark);
+}
+
+/* Footer */
+footer {
+    background-color: var(--barca-blue);
+    color: var(--barca-yellow);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+/* AI Response Box */
+#aiResponse {
+    background-color: var(--barca-red);
+    color: var(--barca-light);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Progress Bar */
+.progress-bar {
+    background-color: var(--barca-blue);
+}
