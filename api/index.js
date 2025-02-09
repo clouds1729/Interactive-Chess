@@ -7,8 +7,6 @@ const cors = require('cors');
 const { OpenAI } = require('openai');
 
 const app = express();
-const PORT = 3000;
-
 app.use(express.json());
 app.use(cors());
 
@@ -60,7 +58,5 @@ app.post('/ask', async (req, res) => {
     }
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`✅ Server is running on http://localhost:${PORT}`);
-});
+// Export the function for Vercel (DO NOT start an Express server manually)
+module.exports = app;
